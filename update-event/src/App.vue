@@ -1,9 +1,12 @@
 <script setup>
-import EventList from '@/components/EventList.vue';
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <EventList></EventList>
+    <div>
+    <Header></Header>
+    <router-view/>
+  </div>
 </template>
 
 <style scoped>
