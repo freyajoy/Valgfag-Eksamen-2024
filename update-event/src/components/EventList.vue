@@ -11,9 +11,6 @@
   </template>
   
   <script setup>
-
-
-
 //   import { ref, onMounted } from 'vue';
   
 //   // Definér en reactive variabel til at holde events
@@ -37,6 +34,37 @@
   
 //   // Kald fetchEvents, når komponenten indlæses
 //   onMounted(fetchEvents);
+
+import { ref, onMounted } from 'vue';
+
+// Definer en reaktiv variabel til at gemme event-data
+const events = ref([]);
+
+// Funktion til at hente events fra Firebase med fetch
+async function fetchEvents() {
+  try {
+    // Brug din Firebase-database-URL her og tilføj '/events.json' til slutningen
+    const response = await fetch('https://update-event-8f0f6-default-rtdb.europe-west1.firebasedatabase.app/events.json');
+    
+    // Tjek for en fejl i HTTP-svaret
+    if (!response.ok) {
+      throw new Error('Fejl ved hentning af data');
+    }
+
+    // Konverter svaret til JSON
+    const data = await response.json();
+
+    // Hvis data findes, konverter det til en liste
+    events.value = data ? Object.values(data) : [];
+  } catch (error) {
+    console.error("Kunne ikke hente events:", error);
+  }
+}
+
+// Kald fetchEvents-funktionen, når komponenten monteres
+onMounted(() => {
+  fetchEvents();
+});
   </script>
   
   <style scoped>
