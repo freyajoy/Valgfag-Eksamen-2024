@@ -18,12 +18,12 @@
   
   // Function for at hente events fra Facebook API
   const fetchEvents = async () => {
-    const accessToken = 'EAAHfUOhwwBsBO6WtNLH3fp6rvhJ4bRJJ8E251hikjfH1WCQPCmqkntPa35YxyCDJ4PhOkAnOKCHciKAiUMr7HKQ4AH9kJm74DlJCRYCc3Ems3qUrrsWlmJr9RZASej89MES0pZCoVS1d6scFY3ugnJhXZC5mKZB6J5FFcYALqZBfugZCIsl7j1Fqqcpkaf0vvt5N7U8tsZBL0Wor6QD3vKjfpoByzkZD'; // Indsæt dit token her
-    const userId = '527013566791707'; // Indsæt din bruger-id eller event-id
-  
+    const accessToken = 'EAAHfUOhwwBsBOydemGouls4roKhgptcLFkg9JUqAM4FHBj6NapM40CWU9p4A8lymDJpZCKtRIZArTV3ZABK16mFK0o2ooZBk3BiO10ZB79dNzutlarjWVhCRe6dRL3ZAvD3ZBihbeuiM7K2JZBdfi1jlJ7HfiZABRpmM68VF10CLmIm8hjxrnMelFy51y4bU3I6z4kOZC1rr2iwEEXX3Eb5AZDZD'; // Indsæt dit token her
+    const appId = '527013566791707'; // Indsæt din bruger-id eller event-id
+ 
     try {
       const response = await fetch(
-        `https://graph.facebook.com/v13.0/527013566791707/events?access_token=EAAHfUOhwwBsBO6WtNLH3fp6rvhJ4bRJJ8E251hikjfH1WCQPCmqkntPa35YxyCDJ4PhOkAnOKCHciKAiUMr7HKQ4AH9kJm74DlJCRYCc3Ems3qUrrsWlmJr9RZASej89MES0pZCoVS1d6scFY3ugnJhXZC5mKZB6J5FFcYALqZBfugZCIsl7j1Fqqcpkaf0vvt5N7U8tsZBL0Wor6QD3vKjfpoByzkZD`
+        `https://graph.facebook.com/v13.0/527013566791707/events?access_token=EAAHfUOhwwBsBOydemGouls4roKhgptcLFkg9JUqAM4FHBj6NapM40CWU9p4A8lymDJpZCKtRIZArTV3ZABK16mFK0o2ooZBk3BiO10ZB79dNzutlarjWVhCRe6dRL3ZAvD3ZBihbeuiM7K2JZBdfi1jlJ7HfiZABRpmM68VF10CLmIm8hjxrnMelFy51y4bU3I6z4kOZC1rr2iwEEXX3Eb5AZDZD`
       );
       const data = await response.json();
       events.value = data.data || []; // Opdaterer `events`-arrayet
