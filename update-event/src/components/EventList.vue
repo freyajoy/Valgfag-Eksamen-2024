@@ -22,12 +22,12 @@
     },
     methods: {
       async fetchEvents() {
-        const accessToken = 'DIN_ACCESS_TOKEN'; // Indsæt dit token her
-        const userId = 'DIT_BRUGER_ID'; // Indsæt din bruger-id eller event-id
+        const accessToken = 'EAAHfUOhwwBsBOz0IFDyE5csMnkUPfGwemTfZAGV0htPMjL6WP4juUd3VgORuKR5iscgQAq2ZBbHLfGT0vsOueH67617mKqoEU55p6ZCc9wbPjXyrIZBhd5Evw7gKe7Hw4DtCzIDiKJ61894tqHERPVUQQ7UNDWH66Qwqq9ua7L7MLrWvrhD33ZAlBiVnBbKKM3ArxS7KgvGuSKTRsN4JWDZAHlbMse'; // Indsæt dit token her
+        const userId = '527013566791707'; // Indsæt din bruger-id eller event-id
   
         try {
           const response = await fetch(
-            `https://graph.facebook.com/v13.0/${userId}/events?access_token=${accessToken}`
+            `https://graph.facebook.com/v13.0/527013566791707/events?access_token=EAAHfUOhwwBsBOz0IFDyE5csMnkUPfGwemTfZAGV0htPMjL6WP4juUd3VgORuKR5iscgQAq2ZBbHLfGT0vsOueH67617mKqoEU55p6ZCc9wbPjXyrIZBhd5Evw7gKe7Hw4DtCzIDiKJ61894tqHERPVUQQ7UNDWH66Qwqq9ua7L7MLrWvrhD33ZAlBiVnBbKKM3ArxS7KgvGuSKTRsN4JWDZAHlbMse`
           );
           const data = await response.json();
           this.events = data.data || []; // Opdaterer `events` med data fra Facebook
