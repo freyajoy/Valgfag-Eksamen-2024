@@ -1,9 +1,9 @@
 <script setup>
-
+import EventList from '@/components/EventList.vue';
 </script>
 
 <template>
-  <router-link to="/privacy-policy">Privacy Policy</router-link>
+  <EventList></EventList>
 </template>
 
 <style scoped>

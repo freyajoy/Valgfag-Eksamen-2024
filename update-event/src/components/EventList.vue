@@ -10,36 +10,34 @@
     </div>
   </template>
   
-  <script>
-  export default {
-    data() {
-      return {
-        events: [], // Her gemmes begivenhederne
-      };
-    },
-    mounted() {
-      this.fetchEvents();
-    },
-    methods: {
-      async fetchEvents() {
-        const accessToken = 'EAAHfUOhwwBsBOz0IFDyE5csMnkUPfGwemTfZAGV0htPMjL6WP4juUd3VgORuKR5iscgQAq2ZBbHLfGT0vsOueH67617mKqoEU55p6ZCc9wbPjXyrIZBhd5Evw7gKe7Hw4DtCzIDiKJ61894tqHERPVUQQ7UNDWH66Qwqq9ua7L7MLrWvrhD33ZAlBiVnBbKKM3ArxS7KgvGuSKTRsN4JWDZAHlbMse'; // Indsæt dit token her
-        const userId = '527013566791707'; // Indsæt din bruger-id eller event-id
+  <script setup>
+  import { ref, onMounted } from 'vue';
   
-        try {
-          const response = await fetch(
-            `https://graph.facebook.com/v13.0/527013566791707/events?access_token=EAAHfUOhwwBsBOz0IFDyE5csMnkUPfGwemTfZAGV0htPMjL6WP4juUd3VgORuKR5iscgQAq2ZBbHLfGT0vsOueH67617mKqoEU55p6ZCc9wbPjXyrIZBhd5Evw7gKe7Hw4DtCzIDiKJ61894tqHERPVUQQ7UNDWH66Qwqq9ua7L7MLrWvrhD33ZAlBiVnBbKKM3ArxS7KgvGuSKTRsN4JWDZAHlbMse`
-          );
-          const data = await response.json();
-          this.events = data.data || []; // Opdaterer `events` med data fra Facebook
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      },
-    },
+  // Definér en reactive variabel til at holde events
+  const events = ref([]);
+  
+  // Function for at hente events fra Facebook API
+  const fetchEvents = async () => {
+    const accessToken = 'EAAHfUOhwwBsBO6WtNLH3fp6rvhJ4bRJJ8E251hikjfH1WCQPCmqkntPa35YxyCDJ4PhOkAnOKCHciKAiUMr7HKQ4AH9kJm74DlJCRYCc3Ems3qUrrsWlmJr9RZASej89MES0pZCoVS1d6scFY3ugnJhXZC5mKZB6J5FFcYALqZBfugZCIsl7j1Fqqcpkaf0vvt5N7U8tsZBL0Wor6QD3vKjfpoByzkZD'; // Indsæt dit token her
+    const userId = '527013566791707'; // Indsæt din bruger-id eller event-id
+  
+    try {
+      const response = await fetch(
+        `https://graph.facebook.com/v13.0/527013566791707/events?access_token=EAAHfUOhwwBsBO6WtNLH3fp6rvhJ4bRJJ8E251hikjfH1WCQPCmqkntPa35YxyCDJ4PhOkAnOKCHciKAiUMr7HKQ4AH9kJm74DlJCRYCc3Ems3qUrrsWlmJr9RZASej89MES0pZCoVS1d6scFY3ugnJhXZC5mKZB6J5FFcYALqZBfugZCIsl7j1Fqqcpkaf0vvt5N7U8tsZBL0Wor6QD3vKjfpoByzkZD`
+      );
+      const data = await response.json();
+      events.value = data.data || []; // Opdaterer `events`-arrayet
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
+  
+  // Kald fetchEvents, når komponenten indlæses
+  onMounted(fetchEvents);
   </script>
   
   <style scoped>
   /* Tilføj valgfri styling her */
   </style>
+  
   
