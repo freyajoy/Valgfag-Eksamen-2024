@@ -10,10 +10,22 @@
   </template>
   
   <script setup>
-    import useEvents from '../useEvents.js';  // Importér `useEvents` som en funktion
-    const { events } = useEvents();  // Brug `useEvents()` til at få adgang til `events`
+    import { ref, onMounted, watchEffect } from 'vue';
+    import { fetchEventsFromFirebase } from '../firebaseService';  // Importér funktionen fra firebaseService
 
+    const events = ref([]);  // Opret en reaktiv liste til at gemme events
 
+    async function loadEvents() {
+      events.value = await fetchEventsFromFirebase();  // Hent events fra Firebase og gem i `events`
+    }
+
+    onMounted(loadEvents);  // Kald loadEvents, når komponenten monteres
+    
+     // Overvåg ændringer og genindlæs events
+    watchEffect(async () => {
+      events.value = await fetchEventsFromFirebase();
+    });
+      
   </script>
   
   <style scoped>
