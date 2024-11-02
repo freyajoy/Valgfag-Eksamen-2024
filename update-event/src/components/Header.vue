@@ -15,10 +15,24 @@
   </template>
   
   <script setup>
-    import { ref } from 'vue';
-    import useEvents from '../useEvents.js';  // Importér `useEvents` som en funktion
+    import { ref, onMounted } from 'vue';
+    import { fetchEventsFromFirebase } from '../firebaseService';
 
-    const { events } = useEvents();  // Brug `useEvents()` til at få adgang til `events`
+    const events = ref([]);  // Definer en reaktiv variabel til events
     const showDropdown = ref(false);
+
+    async function loadEvents() {
+    events.value = await fetchEventsFromFirebase();  // Hent events fra Firebase
+    }
+
+    // Kald loadEvents, når komponenten monteres
+    onMounted(loadEvents);
+
+
+    // import { ref } from 'vue';
+    // import useEvents from '../useEvents.js';  // Importér `useEvents` som en funktion
+
+    // const { events } = useEvents();  // Brug `useEvents()` til at få adgang til `events`
+    // const showDropdown = ref(false);
   </script>
   
