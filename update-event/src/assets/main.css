@@ -1,9 +1,17 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 * {
     margin: 0;
+    padding: 0;
+    font: inherit;
   }
 
-h1 {
-    font-family: "pain-de-mie", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+template {
+    font-size: 16px;
 }
+
+
