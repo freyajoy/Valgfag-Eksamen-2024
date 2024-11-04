@@ -74,10 +74,6 @@
     position: relative;
   }
 
-  /* .under-items {
-    background-color: #AE2824;
-    margin-top: 190px;
-  } */
   .under-items {
   position: absolute;
   top: 100%; /* Starter direkte under menu-punktet */
@@ -104,11 +100,11 @@
 }
 
 .under-items a:hover {
-  color: #C3B9A6;
+  color: rgba(250, 250, 250, 0.6);
 }
 
 /* Hover-effekt på hovedmenu-elementerne */
 .menu-items > li:hover > a {
-  color: #C3B9A6;
+  color: rgba(250, 250, 250, 0.6);
 }
 </style>
