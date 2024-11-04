@@ -1,6 +1,11 @@
 <template>
     <nav @mouseleave="showDropdown = false">
-      <ul>
+      <ul class="menu-items">
+        <li><a href="#">Forside</a></li>
+        <li><a href="#">Om os</a></li>
+        <li><a href="#">Biograf</a></li>
+        <li><a href="#">Café</a></li>
+        <li><a href="#">Gavekort</a></li>
         <li @mouseover="showDropdown = true">
           <a href="#">Arrangementer</a>
           <ul v-if="showDropdown" @mouseover="showDropdown = true" @mouseleave="showDropdown = false">
@@ -10,6 +15,7 @@
             </li>
           </ul>
         </li>
+        <li><a href="#">Mere</a></li>
       </ul>
     </nav>
   </template>
@@ -35,4 +41,25 @@
     // const { events } = useEvents();  // Brug `useEvents()` til at få adgang til `events`
     // const showDropdown = ref(false);
   </script>
-  
+
+<style scoped>
+
+  nav {
+    background-color: #AE2824;
+    display: flex;
+    height: 90px;
+  }
+  .menu-items {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+  }
+  .menu-items a{
+    color: white;
+    font-family: "gill-sans-nova", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-decoration: none;
+  }
+</style>
