@@ -1,10 +1,29 @@
 <template>
     <div v-if="event">
-      <h1>{{ event.name }}</h1>
+        <img v-if="event.banner" :src="event.banner" alt="Event banner">
+        <h1>{{ event.name }}</h1>
+         <!-- Lokation -->
+         <p v-if="event.place && event.place.name">
+             <span>📍 Lokation:</span> {{ event.place.name }}
+        </p>
+    
+      <!-- Start Dato -->
+        <p>
+        <span>📅 Start dato:</span> {{ formatDate(event.start_time) }}
+        </p>
+        <p>
+        <span>⏰ Starttidspunkt:</span> {{ formatTime(event.start_time) }}
+        </p>
+
+    <!-- Slut Dato -->
+        <p>
+        <span>📅 Slut dato:</span> {{ formatDate(event.end_time) }}
+        </p>
+        <p>
+        <span>⏰ Sluttidspunkt:</span> {{ formatTime(event.end_time) }}
+        </p>
+     
       <p><em>{{ event.description }}</em></p>
-      <p><strong>Start Date:</strong> {{ formatDate(event.start_time) }}</p>
-      <p><strong>End Date:</strong> {{ formatDate(event.end_time) }}</p>
-      <img v-if="event.banner" :src="event.banner" alt="Event banner">
     </div>
     <div v-else>
     <p>Event not found. ID: {{ route.params.id }}</p> <!-- Tilføjet linje for at teste ID -->
@@ -29,19 +48,26 @@ async function loadEvent() {
   }
 }
 
-// Tidspunkt på event formateringsfunktion
+// Funktion til at formatere datoen alene
 const formatDate = (dateString) => {
-  const date = new Date(dateString);  // Konverterer dateString til et Date-objekt 
-  return `${date.toLocaleDateString("en-GB", {
+  const date = new Date(dateString);
+  return date.toLocaleDateString("da-DK", {
     day: "numeric",
     month: "long",
     year: "numeric",
-  })} at ${date.toLocaleTimeString("en-GB", {
+  });
+};
+
+// Funktion til at formatere tiden alene
+const formatTime = (dateString) => {
+  const date = new Date(dateString);
+  const time = date.toLocaleTimeString("da-DK", {
     hour: "2-digit",
     minute: "2-digit",
-    hour12: true,
-  })}`;
+  }).replace('.', ':');  // Skift punktum til kolon i tiden
+  return `kl. ${time}`;  // Tilføj "kl." foran tiden
 };
+
 
 onMounted(loadEvent);
 
@@ -57,6 +83,31 @@ watch(
 </script>
 
 <style scoped>
+h1 {
+  font-size: 2em;
+  margin-bottom: 0.5em;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.5;
+  margin-bottom: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+span {
+  font-weight: bold;
+  margin-right: 0.5em;
+  display: inline-flex;
+  align-items: center;
+}
+
+img {
+  margin-top: 1em;
+  max-width: 100%;
+  height: auto;
+}
 
 
 </style>
