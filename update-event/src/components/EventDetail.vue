@@ -1,7 +1,7 @@
 <template>
     <div v-if="event">
       <h1>{{ event.name }}</h1>
-      <p>{{ event.description }}</p>
+      <p><em>{{ event.description }}</em></p>
       <p><strong>Start Date:</strong> {{ formatDate(event.start_time) }}</p>
       <p><strong>End Date:</strong> {{ formatDate(event.end_time) }}</p>
       <img v-if="event.banner" :src="event.banner" alt="Event banner">
