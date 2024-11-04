@@ -2,8 +2,8 @@
     <div v-if="event">
       <h1>{{ event.name }}</h1>
       <p>{{ event.description }}</p>
-      <p>Start Date: {{ event.start_time }}</p>
-      <p>End Date: {{ event.end_time }}</p>
+      <p><strong>Start Date:</strong> {{ formatDate(event.start_time) }}</p>
+      <p><strong>End Date:</strong> {{ formatDate(event.end_time) }}</p>
       <img v-if="event.banner" :src="event.banner" alt="Event banner">
     </div>
     <div v-else>
@@ -29,6 +29,20 @@ async function loadEvent() {
   }
 }
 
+// Tidspunkt på event formateringsfunktion
+const formatDate = (dateString) => {
+  const date = new Date(dateString);  // Konverterer dateString til et Date-objekt 
+  return `${date.toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  })} at ${date.toLocaleTimeString("en-GB", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true,
+  })}`;
+};
+
 onMounted(loadEvent);
 
 // Overvåg ændringer i route.params.id og kald loadEvent ved ændring
@@ -41,3 +55,8 @@ watch(
   }
 );
 </script>
+
+<style scoped>
+
+
+</style>
