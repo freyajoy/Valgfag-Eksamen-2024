@@ -1,10 +1,12 @@
 <template>
     <div v-if="event">
-        <img v-if="event.banner" :src="event.banner" alt="Event banner">
+        <img  src="/src/assets/images/event-img.png" alt="Event banner">
         <h1>{{ event.name }}</h1>
          <!-- Lokation -->
          <p v-if="event.place && event.place.name">
-             <span>📍 Lokation:</span> {{ event.place.name }}
+             <span><i class="fa-solid fa-location-dot"></i>
+                 Lokation:
+            </span> {{ event.place.name }}
         </p>
     
       <!-- Start Dato -->
@@ -84,30 +86,26 @@ watch(
 
 <style scoped>
 h1 {
-  font-size: 2em;
-  margin-bottom: 0.5em;
+  font-size: 3rem;
 }
 
 p {
-  font-size: 1.1em;
+  font-size: 1rem;
   line-height: 1.5;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
 }
 
 span {
   font-weight: bold;
-  margin-right: 0.5em;
+  margin-right: 0.5rem;
   display: inline-flex;
   align-items: center;
 }
 
-img {
-  margin-top: 1em;
-  max-width: 100%;
-  height: auto;
-}
+
+
 
 
 </style>
