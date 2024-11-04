@@ -1,5 +1,6 @@
 <template>
     <nav @mouseleave="showDropdown = false">
+      <img src="../assets/images/Logo sommerfugl hvid.png" alt="Logo" />
       <ul class="menu-items">
         <li><a href="#">Forside</a></li>
         <li><a href="#">Om os</a></li>
@@ -8,7 +9,7 @@
         <li><a href="#">Gavekort</a></li>
         <li @mouseover="showDropdown = true">
           <a href="#">Arrangementer</a>
-          <ul v-if="showDropdown" @mouseover="showDropdown = true" @mouseleave="showDropdown = false">
+          <ul v-if="showDropdown" @mouseover="showDropdown = true" @mouseleave="showDropdown = false" class="under-items">
             <!-- Dropdown-menu holder sig åben, indtil musen forlader både menuen og dens elementer -->
             <li v-for="event in events" :key="event.id">
               <router-link :to="`/events/${event.id}`">{{ event.name }}</router-link>
@@ -43,11 +44,14 @@
   </script>
 
 <style scoped>
-
   nav {
     background-color: #AE2824;
     display: flex;
     height: 90px;
+  }
+
+  nav img {
+    margin: 20px;
   }
   .menu-items {
     display: flex;
@@ -61,5 +65,10 @@
     font-weight: 400;
     font-style: normal;
     text-decoration: none;
+  }
+
+  .under-items {
+    background-color: #AE2824;
+    margin-top: 190px;
   }
 </style>
