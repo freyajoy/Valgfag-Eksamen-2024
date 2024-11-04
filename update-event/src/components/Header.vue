@@ -8,7 +8,7 @@
         <li><a href="#">Café</a></li>
         <li><a href="#">Gavekort</a></li>
         <li @mouseover="showDropdown = true" class="dropdown">
-          <a href="#">Arrangementer</a>
+          <a href="#">Arrangementer <i class="fa-solid fa-angle-down"></i></a>
           <ul v-if="showDropdown" @mouseover="showDropdown = true" @mouseleave="showDropdown = false" class="under-items">
             <!-- Dropdown-menu holder sig åben, indtil musen forlader både menuen og dens elementer -->
             <li v-for="event in events" :key="event.id">
@@ -18,6 +18,7 @@
         </li>
         <li><a href="#">Mere</a></li>
       </ul>
+      <button class="header-button"><p><strong>Kontakt</strong></p></button>
     </nav>
   </template>
   
@@ -47,6 +48,7 @@
   nav {
     background-color: #AE2824;
     display: flex;
+    justify-content: space-around;
     height: 90px;
     position: relative;
   }
@@ -107,4 +109,23 @@
 .menu-items > li:hover > a {
   color: rgba(250, 250, 250, 0.6);
 }
+
+.header-button {
+  background-color: #F4A38A;
+  border: solid 2px #F4A38A;
+  border-radius: 12px;
+  padding: 12px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  align-self: center;
+  color: #AE2824;
+  cursor: pointer;
+}
+
+.header-button:hover {
+  background-color: #AE2824;
+  color: #F4A38A;
+}
+
 </style>
