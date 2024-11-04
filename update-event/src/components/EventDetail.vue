@@ -1,16 +1,17 @@
 <template>
     <div v-if="event">
-        <img  src="/src/assets/images/event-img.png" alt="Event banner">
+        <div class="banner-container">
+            <img class="banner-image" src="/src/assets/images/event-img.png" alt="Event banner" />
+        </div>
         <h1>{{ event.name }}</h1>
          <!-- Lokation -->
          <p v-if="event.place && event.place.name">
-             <span><i class="fa-solid fa-location-dot"></i>
-                 Lokation:
-            </span> {{ event.place.name }}
+        <i class="fa-solid fa-location-dot"></i>
+        {{ event.place.name }}
         </p>
     
       <!-- Start Dato -->
-       <div>
+       <div class="start-day">
         <p>
         <span>
             <i class="fa-regular fa-calendar-days"></i>
@@ -26,7 +27,7 @@
     </div>
 
     <!-- Slut Dato -->
-     <div>
+     <div class="end-day">
         <p>
         <span>
             <i class="fa-regular fa-calendar-days"></i>
@@ -40,7 +41,7 @@
         </span> {{ formatTime(event.end_time) }}
         </p>
      
-      <p><em>{{ event.description }}</em></p>
+      <p class="text-event"><em>{{ event.description }}</em></p>
       </div>
    </div>
     
@@ -115,14 +116,40 @@ p {
 }
 
 span {
-  font-weight: bold;
+  
   margin-right: 0.5rem;
   display: inline-flex;
   align-items: center;
 }
 
+i{
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+.start-day{
+    margin-top: 2.2rem;
 
+}
 
+.end-day{
+    margin-top: 1rem;
+}
+
+.text-event{
+    margin-top: 2.2rem;
+}
+
+.banner-container {
+  width: 100%;          /* Strækker containeren over hele bredden */
+  overflow: hidden;     /* Sikrer, at billedet ikke går ud over containeren */
+}
+
+.banner-image {
+  width: 100%;          /* Billedet strækkes til fuld bredde */
+  height: 100px;         /* Automatisk højde for at bevare billedets proportioner */
+  display: block;       /* Fjerner eventuelle mellemrum under billedet */
+  object-fit: cover;    /* Gør billedet til et banner-udseende ved at beskære det, hvis nødvendigt */
+}
 
 
 </style>
