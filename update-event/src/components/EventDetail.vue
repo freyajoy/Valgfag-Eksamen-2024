@@ -10,23 +10,40 @@
         </p>
     
       <!-- Start Dato -->
+       <div>
         <p>
-        <span>📅 Start dato:</span> {{ formatDate(event.start_time) }}
+        <span>
+            <i class="fa-regular fa-calendar-days"></i>
+            Start dato:
+        </span> {{ formatDate(event.start_time) }}
         </p>
         <p>
-        <span>⏰ Starttidspunkt:</span> {{ formatTime(event.start_time) }}
+        <span>
+            <i class="fa-regular fa-clock"></i>
+             Starttidspunkt:
+            </span> {{ formatTime(event.start_time) }}
         </p>
+    </div>
 
     <!-- Slut Dato -->
+     <div>
         <p>
-        <span>📅 Slut dato:</span> {{ formatDate(event.end_time) }}
+        <span>
+            <i class="fa-regular fa-calendar-days"></i>
+            Slut dato:
+        </span> {{ formatDate(event.end_time) }}
         </p>
         <p>
-        <span>⏰ Sluttidspunkt:</span> {{ formatTime(event.end_time) }}
+        <span>
+            <i class="fa-regular fa-clock"></i>
+            Sluttidspunkt:
+        </span> {{ formatTime(event.end_time) }}
         </p>
      
       <p><em>{{ event.description }}</em></p>
-    </div>
+      </div>
+   </div>
+    
     <div v-else>
     <p>Event not found. ID: {{ route.params.id }}</p> <!-- Tilføjet linje for at teste ID -->
     </div>
