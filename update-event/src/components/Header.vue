@@ -7,7 +7,7 @@
         <li><a href="#">Biograf</a></li>
         <li><a href="#">Café</a></li>
         <li><a href="#">Gavekort</a></li>
-        <li @mouseover="showDropdown = true">
+        <li @mouseover="showDropdown = true" class="dropdown">
           <a href="#">Arrangementer</a>
           <ul v-if="showDropdown" @mouseover="showDropdown = true" @mouseleave="showDropdown = false" class="under-items">
             <!-- Dropdown-menu holder sig åben, indtil musen forlader både menuen og dens elementer -->
@@ -48,6 +48,7 @@
     background-color: #AE2824;
     display: flex;
     height: 90px;
+    position: relative;
   }
 
   nav img {
@@ -58,6 +59,8 @@
     align-items: center;
     gap: 30px;
     list-style: none;
+    margin: 0;
+    padding: 0;
   }
   .menu-items a{
     color: white;
@@ -67,8 +70,45 @@
     text-decoration: none;
   }
 
-  .under-items {
+  .dropdown {
+    position: relative;
+  }
+
+  /* .under-items {
     background-color: #AE2824;
     margin-top: 190px;
-  }
+  } */
+  .under-items {
+  position: absolute;
+  top: 100%; /* Starter direkte under menu-punktet */
+  left: 0;
+  background-color: #AE2824;
+  padding: 10px 0;
+  list-style: none;
+  display: none; /* Skjult som standard */
+  min-width: 150px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown:hover .under-items {
+  display: block;
+}
+.under-items li {
+  padding: 5px 20px;
+}
+
+.under-items a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+
+.under-items a:hover {
+  color: #C3B9A6;
+}
+
+/* Hover-effekt på hovedmenu-elementerne */
+.menu-items > li:hover > a {
+  color: #C3B9A6;
+}
 </style>
