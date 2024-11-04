@@ -34,3 +34,9 @@ strong {
 em{
     font-style: italic;
 }
+
+a{
+    font-family: "gill-sans-nova", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}

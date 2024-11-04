@@ -3,6 +3,7 @@
         <div class="banner-container">
             <img class="banner-image" src="/src/assets/images/event-img.png" alt="Event banner" />
         </div>
+        <div class="main-details">
         <h1>{{ event.name }}</h1>
          <!-- Lokation -->
          <p v-if="event.place && event.place.name">
@@ -42,7 +43,14 @@
         </p>
      
       <p class="text-event"><em>{{ event.description }}</em></p>
+       
+      <!-- Tilmeld-Knap -->
+      <a v-if="event.id" :href="`https://www.facebook.com/events/${event.id}`" target="_blank" class="tilmeld-knap">
+      Tilmeld
+      </a>
+      
       </div>
+    </div>
    </div>
     
     <div v-else>
@@ -116,40 +124,69 @@ p {
 }
 
 span {
-  
   margin-right: 0.5rem;
   display: inline-flex;
   align-items: center;
 }
 
-i{
-    font-size: 0.8rem;
-    margin-right: 0.5rem;
-}
-.start-day{
-    margin-top: 2.2rem;
-
+i {
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
 }
 
-.end-day{
-    margin-top: 1rem;
+.start-day {
+  margin-top: 2rem;
 }
 
-.text-event{
-    margin-top: 2.2rem;
+.end-day {
+  margin-top: 1rem;
+}
+
+.text-event {
+  margin-top: 2rem;
 }
 
 .banner-container {
-  width: 100%;          /* Strækker containeren over hele bredden */
-  overflow: hidden;     /* Sikrer, at billedet ikke går ud over containeren */
+  width: 100%;         
+  overflow: hidden;     
 }
 
 .banner-image {
-  width: 100%;          /* Billedet strækkes til fuld bredde */
-  height: 100px;         /* Automatisk højde for at bevare billedets proportioner */
-  display: block;       /* Fjerner eventuelle mellemrum under billedet */
-  object-fit: cover;    /* Gør billedet til et banner-udseende ved at beskære det, hvis nødvendigt */
+  width: 100%;          
+  height: 300px;        
+  display: block;       
+  object-fit: cover;    
+}
+
+.main-details {
+  display: flex;
+  flex-direction: column;  
+  padding: 80px;
+  width: 50%;
+  margin: auto;
+
 }
 
 
+.tilmeld-knap {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 20px;
+    font-size: 1rem;
+    color: #1e1e1e;
+    background-color: #F4A38A;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.tilmeld-knap:hover {
+    background-color: #AE2824;
+  color: #F4A38A;
+}
+
+.fa-location-dot{
+    color: #AE2824;
+}
 </style>
