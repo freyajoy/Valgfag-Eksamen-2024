@@ -1,8 +1,8 @@
 <template>
-    <div>
-      <h1>Facebook Events</h1>
-      <ul>
-        <li v-for="event in events" :key="event.id">
+    <div class="events-page-container">
+      <h1>Alle Events</h1>
+      <ul class="event-list">
+        <li v-for="event in events" :key="event.id" class="event-item">
           <router-link :to="`/events/${event.id}`">{{ event.name }}</router-link>
         </li>
       </ul>
@@ -28,8 +28,53 @@
       
   </script>
   
-  <style scoped>
-  /* Tilføj valgfri styling her */
-  </style>
-  
-  
+<style scoped>
+.events-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  padding: 2rem;
+}
+
+h1 {
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.event-list {
+  list-style-type: none; /* Removes bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+.event-item {
+  width: 100%;              /* Takes full width of container */
+  max-width: 600px;          /* Limits width to keep items readable */
+  margin-bottom: 15px;       /* Space between items */
+}
+
+
+.event-item a {
+  color: inherit; 
+  text-decoration: none;
+}
+
+.event-item a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #F4A38A;
+  color: #1e1e1e;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: transform 0.3s ease, background-color 0.3s, color 0.3s;
+}
+
+.event-item a:hover {
+  transform: scale(1.05);
+  background-color: #AE2824;
+  color: #fff;
+}
+ </style>

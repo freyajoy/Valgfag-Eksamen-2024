@@ -37,11 +37,7 @@
     onMounted(loadEvents);
 
 
-    // import { ref } from 'vue';
-    // import useEvents from '../useEvents.js';  // Importér `useEvents` som en funktion
-
-    // const { events } = useEvents();  // Brug `useEvents()` til at få adgang til `events`
-    // const showDropdown = ref(false);
+   
   </script>
 
 <style scoped>
