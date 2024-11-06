@@ -65,7 +65,6 @@ h1 {
 .event-item a {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #F4A38A;
   color: #1e1e1e;
   text-decoration: none;
   border-radius: 5px;
@@ -73,8 +72,8 @@ h1 {
 }
 
 .event-item a:hover {
-  transform: scale(1.05);
-  background-color: #AE2824;
-  color: #fff;
+  transform: scale(1.20);
+ 
+  color: #1e1e1e;
 }
  </style>
