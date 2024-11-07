@@ -60,26 +60,24 @@
   </template>
   
 <script setup>
-import { ref, onMounted, watch } from 'vue';
-import { useRoute } from 'vue-router';
-import { syncFacebookEventsToFirebase } from '../facebookService';
-import { fetchEventFromFirebase } from '../firebaseService';
+import { ref, onMounted, watch } from 'vue'; // Importer vue funktioner
+import { useRoute } from 'vue-router'; // Importer routor
+import { fetchEventFromFirebase } from '../firebaseService'; // Hentning af database service
 
-const route = useRoute();
-const event = ref(null);
+const route = useRoute(); // Nuværende route
+const event = ref(null); // Starter i null indtil ny data
 
-async function loadEvent() {
-  const eventId = route.params.id;  // Hent event-ID fra URL'en
-  // Hent event fra Firebase og gem det i `event`
-  if (eventId) {
-    event.value = await fetchEventFromFirebase(eventId);
+const loadEvent = async () => {
+  const eventId = route.params.id; // Henter id fra event gennem routes
+  if (eventId) { // Hvis id findes gemmes data i event.value
+    event.value = await fetchEventFromFirebase(eventId); // trækker objektet data fra funktionen og finder id'et
   }
-}
+};
 
 // Funktion til at formatere datoen alene
-const formatDate = (dateString) => {
-  const date = new Date(dateString);
-  return date.toLocaleDateString("da-DK", {
+const formatDate = (dateString) => { // Tager imod parameter dateString
+  const date = new Date(dateString); // Opretter date object
+  return date.toLocaleDateString("da-DK", { // Metode ændre til dansk dato
     day: "numeric",
     month: "long",
     year: "numeric",
@@ -88,7 +86,7 @@ const formatDate = (dateString) => {
 
 // Funktion til at formatere tiden alene
 const formatTime = (dateString) => {
-  const date = new Date(dateString);
+  const date = new Date(dateString); // Konverterer dateString til et Date-objekt
   const time = date.toLocaleTimeString("da-DK", {
     hour: "2-digit",
     minute: "2-digit",
@@ -97,7 +95,7 @@ const formatTime = (dateString) => {
 };
 
 
-onMounted(loadEvent);
+onMounted(loadEvent); // Kalder på loadEvent
 
 // Overvåg ændringer i route.params.id og kald loadEvent ved ændring
 watch(
