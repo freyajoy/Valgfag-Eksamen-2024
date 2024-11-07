@@ -1,4 +1,4 @@
-import { fetchEventFromFirebase, saveEventsToFirebase } from './firebaseService';
+import { saveEventsToFirebase } from './firebaseService';
 
 // Facebook applikation
 const pageId = "484706954727724";           
