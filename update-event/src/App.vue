@@ -14,7 +14,7 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div>
+  <div id="app">
     <Header></Header>
     <router-view/>
   </div>
